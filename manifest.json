@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Bot Coach – Stockfish overlay for Chess.com bot games",
+  "version": "1.0.0",
+  "description": "Shows Stockfish's best moves as arrows while you play Chess.com bots or use the analysis board. Deliberately disabled for games against people.",
+  "permissions": ["offscreen", "storage"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.chess.com/play/computer*",
+        "https://www.chess.com/analysis*"
+      ],
+      "js": ["content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Bot Coach",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

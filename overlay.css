@@ -1,0 +1,41 @@
+.botcoach-arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
+.bc-arrow { stroke-width: 2.2; stroke-linecap: round; opacity: 0.85; }
+.bc-arrow.bc-c0 { stroke: #2ecc71; stroke-width: 2.6; }
+.bc-arrow.bc-c1 { stroke: #3498db; opacity: 0.6; }
+.bc-arrow.bc-c2 { stroke: #f1c40f; opacity: 0.5; }
+.bc-head.bc-c0 { fill: #2ecc71; }
+.bc-head.bc-c1 { fill: #3498db; }
+.bc-head.bc-c2 { fill: #f1c40f; }
+
+.botcoach-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 99999;
+  width: 280px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(20, 22, 26, 0.92);
+  color: #eee;
+  font: 12px/1.45 system-ui, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+.botcoach-panel .bc-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.botcoach-panel .bc-eval { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
+.botcoach-panel .bc-muted { color: #9aa0a6; }
+.botcoach-panel .bc-hint { margin-top: 6px; font-size: 11px; }
+.botcoach-panel .bc-line { display: flex; gap: 6px; align-items: baseline; margin-top: 4px; }
+.botcoach-panel .bc-score { width: 46px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.botcoach-panel .bc-pv { font-family: ui-monospace, monospace; color: #cfd3d7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.botcoach-panel .bc-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; transform: translateY(-1px); }
+.botcoach-panel .bc-dot.bc-c0 { background: #2ecc71; }
+.botcoach-panel .bc-dot.bc-c1 { background: #3498db; }
+.botcoach-panel .bc-dot.bc-c2 { background: #f1c40f; }
