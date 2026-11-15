@@ -5,6 +5,7 @@
 // without full page reloads, so the URL is re-checked continuously).
 
 (() => {
+  const ALLOWED = [];
   const isAllowedPage = () => ALLOWED.some((re) => re.test(location.pathname));
 
   const settings = { enabled: true, depth: 16, multipv: 3, onlyMyTurn: true };
