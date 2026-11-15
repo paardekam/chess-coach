@@ -1,12 +1,11 @@
 // Bot Coach – content script.
 // Reads the Chess.com board, builds a FEN, asks Stockfish for the best moves
-// and draws arrows + an info panel. Only active on the bot page and the
-// analysis board; it switches itself off anywhere else (Chess.com navigates
-// without full page reloads, so the URL is re-checked continuously).
+// and draws arrows + an info panel. It is available on every Chess.com page
+// that contains a supported board (Chess.com navigates without full page
+// reloads, so the page is checked continuously).
 
 (() => {
-  const ALLOWED = [];
-  const isAllowedPage = () => ALLOWED.some((re) => re.test(location.pathname));
+  const isAllowedPage = () => true;
 
   const settings = { enabled: true, depth: 16, multipv: 3, onlyMyTurn: true };
   let board = null;

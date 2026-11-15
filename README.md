@@ -1,14 +1,13 @@
 # Bot Coach
 
 Stockfish 19 (lite, runs locally in your browser) that draws best-move arrows
-on Chess.com, **only** on the bot page (chess.com/play/computer) and the
-analysis board. It turns itself off on every other page, including live games.
+on Chess.com pages with a supported board.
 
 ## Install in Brave
 1. Unzip this folder somewhere permanent.
 2. Go to brave://extensions and switch on "Developer mode" (top right).
 3. Click "Load unpacked" and pick the unzipped `bot-coach` folder.
-4. Open chess.com/play/computer and start a game.
+4. Open any Chess.com page with a supported board and start a game.
 
 ## Use
 - Green arrow = best move, blue/yellow = 2nd/3rd best.
