@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Bot Coach – Stockfish overlay for Chess.com bot games",
   "version": "1.0.0",
-  "description": "Shows Stockfish's best moves as arrows while you play Chess.com bots or use the analysis board. Deliberately disabled for games against people.",
+  "description": "Shows Stockfish's best moves on Chess.com pages. Move playback is limited to bot games and the analysis board.",
   "permissions": ["offscreen", "storage"],
   "background": { "service_worker": "background.js" },
   "content_scripts": [

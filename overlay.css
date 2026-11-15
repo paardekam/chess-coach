@@ -31,6 +31,21 @@
 .botcoach-panel .bc-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
 .botcoach-panel .bc-eval { font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; }
 .botcoach-panel .bc-muted { color: #9aa0a6; }
+.botcoach-panel .bc-play-best {
+  margin: 8px 0 2px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: #2ecc71;
+  color: #102217;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+.botcoach-panel .bc-play-best:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
 .botcoach-panel .bc-hint { margin-top: 6px; font-size: 11px; }
 .botcoach-panel .bc-line { display: flex; gap: 6px; align-items: baseline; margin-top: 4px; }
 .botcoach-panel .bc-score { width: 46px; font-weight: 600; font-variant-numeric: tabular-nums; }

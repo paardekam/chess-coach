@@ -6,6 +6,9 @@
 
 (() => {
   const isAllowedPage = () => true;
+  const isAutoPlayPage = () =>
+    /^\/play\/computer(?:\/|$)/.test(location.pathname) ||
+    /^\/analysis(?:\/|$)/.test(location.pathname);
 
   const settings = { enabled: true, depth: 16, multipv: 3, onlyMyTurn: true };
   let board = null;
@@ -15,6 +18,7 @@
   let latest = null; // latest engine result for lastFen
   let flipped = false;
   let currentStm = "w";
+  let autoMovePending = false;
 
   // ---------- settings ----------
   chrome.storage.sync.get(settings, (s) => {
@@ -162,6 +166,33 @@
     return (v > 0 ? "+" : "") + v.toFixed(2);
   }
 
+  function playBestMove() {
+    if (
+      !isAutoPlayPage() ||
+      autoMovePending ||
+      !latest?.lines.length ||
+      !board
+    ) {
+      return;
+    }
+
+    const move = latest.lines[0].pv[0];
+    const from = board.querySelector(`.square-${move.slice(0, 2)}`);
+    const to = board.querySelector(`.square-${move.slice(2, 4)}`);
+    if (!from || !to) {
+      panel.querySelector(".bc-play-best").textContent = "Move unavailable";
+      return;
+    }
+
+    autoMovePending = true;
+    from.click();
+    window.setTimeout(() => {
+      to.click();
+      autoMovePending = false;
+      refresh(true);
+    }, 80);
+  }
+
   function clearDrawing() {
     if (svg) svg.querySelector(".bc-layer").innerHTML = "";
   }
@@ -213,6 +244,13 @@
       <div class="bc-top"><b>Bot Coach</b><span class="bc-eval">${fmtScore(best, stm)}</span></div>
       <div class="bc-muted">depth ${best.depth} · ${stm === "w" ? "White" : "Black"} to move
         ${hideArrows ? "· waiting for your turn" : ""}</div>
+      ${
+        isAutoPlayPage()
+          ? `<button class="bc-play-best" type="button" ${
+              hideArrows || autoMovePending ? "disabled" : ""
+            }>Play best move</button>`
+          : ""
+      }
       ${latest.lines
         .slice(0, settings.multipv)
         .map(
@@ -223,6 +261,9 @@
         )
         .join("")}
       <div class="bc-muted bc-hint">Alt+B to hide/show</div>`;
+    panel
+      .querySelector(".bc-play-best")
+      ?.addEventListener("click", playBestMove);
   }
 
   function teardown() {
@@ -232,6 +273,7 @@
     svg = panel = null;
     lastFen = null;
     latest = null;
+    autoMovePending = false;
     chrome.runtime
       .sendMessage({ target: "background", type: "stop" })
       .catch(() => {});

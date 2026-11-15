@@ -11,6 +11,7 @@ on Chess.com pages with a supported board.
 
 ## Use
 - Green arrow = best move, blue/yellow = 2nd/3rd best.
+- “Play best move” is available only in bot games and the analysis board.
 - Panel bottom-right: evaluation (from White's view), depth, top lines.
 - Alt+B hides/shows everything. Click the toolbar icon for settings
   (lines, depth, "arrows only on my turn").
