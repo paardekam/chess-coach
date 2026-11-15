@@ -7,6 +7,7 @@
   "background": { "service_worker": "background.js" },
   "content_scripts": [
     {
+      "matches": ["https://www.chess.com/*", "https://chess.com/*"],
       "js": ["content.js"],
       "css": ["overlay.css"],
       "run_at": "document_idle"
